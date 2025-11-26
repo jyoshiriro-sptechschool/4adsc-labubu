@@ -1,0 +1,20 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name localhost;
+
+    # Rota padrão: Serve uma página simples
+    location / {
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+    }
+
+    # Proxy para /api/* -> backend
+    # ${IP_PORTA_API} será substituído pela variável de ambiente no pipeline de CI/CD
+    location /api/ {
+        proxy_pass http://${IP_PORTA_API}/;
+        
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+    }
+}
