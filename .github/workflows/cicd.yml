@@ -2,35 +2,90 @@
 
 name: CI
 
-# Controls when the workflow will run
+# Controls when the workflow will runname: CI/CD para EC2 pública (FE) e privada (BE)
+
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main # O branch que acionará o deploy
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build_and_deploy:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      # 1. Checkout do código
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # 2. Configuração do ambiente Node
+      - name: FE - Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      # 3. Build da aplicação (Se for uma aplicação que precisa ser construída, ex: React, Angular, Vue)
+      - name: FE - Instalar Dependências e Fazer Build
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+             # echo "IP_PORTA_API=http://${{ secrets.REMOTE_HOST_PRIVADO }}:8080" > .env
+             npm install
+             npm run build --if-present 
+             # Se sua app não precisar de build, remova esta etapa
+        working-directory: ./frontend
+
+      # 4. Deploy (Transferência de arquivos)
+      - name: FE - Copiar arquivos de FE
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/dist
+          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          ARGS: "-rltgoDzvO --delete" 
+          # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./dist)
+          SOURCE: "./frontend/dist/" 
+          
+      - name: FE - Copiar arquivos do Docker
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/docker
+          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          ARGS: "-rltgoDzvO --delete" 
+          # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./dist)
+          SOURCE: "./frontend/docker/"           
+
+      # 5. Atualiando o IP privado da API e reininciado o docker do Ngnix
+      - name: FE - Executar Comando Shell na EC2
+        uses: appleboy/ssh-action@v1.0.3 # Action popular para SSH
+        with:
+          host: ${{ secrets.REMOTE_HOST }} 
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}  
+
+          # O Comando ou Script a ser Executado no EC2
+          # Use o pipe '|' para comandos de múltiplas linhas
+          script: |
+            set -e
+
+            export IP_PORTA_API=${{ secrets.REMOTE_HOST_PRIVADO }}:8080
+            echo "Variável de IP e porta da API criada: $IP_PORTA_API"
+
+            cd /home/${{ secrets.REMOTE_USER }}/frontend
+            
+            envsubst '${IP_PORTA_API}' < ./docker/default.conf.template > ./docker/default.conf
+            echo "Arquivo default.conf do ngnix criado"
+
+            docker stop frontend || true
+            docker rm frontend || true
+            echo "Container anterior parado e excluído"
+
+            docker build -t nginx-sptech -f ./docker/Dockerfile .
+            echo "Imagem docker recriada"
+
+            docker run -d --network host --name frontend nginx-sptech
+            echo "Container docker iniciado"
+            
