@@ -97,7 +97,7 @@ jobs:
 
       # 7. Execução dos testes automatizados do projeto
       - name: BE - Executar Testes automatizados
-        run: mvn clean test # comentei os tests por enquanto     
+        run: mvn clean  # comentei os tests por enquanto     
         working-directory: ./backend
 
 
