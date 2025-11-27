@@ -41,18 +41,9 @@ jobs:
           # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./dist)
           SOURCE: "./frontend/dist/"           
           # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
-          ARGS: "-rltgoDzvO --delete          
           TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/dist" 
-          
-      - name: FE - Copiar arquivos do Docker
-        uses: easingthemes/ssh-deploy@main
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          SOURCE: "../backend/docker/Dockerfile"           
-          ARGS: "-rltgoDzvO --delete" 
-          TARGET: /home/${{ secrets.REMOTE_USER }}/backend/docker
+          ARGS: "-rltgoDzvO --delete                    
+         
           
 
       # 5. Atualiando o IP privado da API e reininciado o docker do Ngnix
@@ -117,18 +108,17 @@ jobs:
           ARGS: "-rltgoDzvO --delete" 
           # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./target)
           SOURCE: "./backend/target/*.jar"        
-
-      - name: BE - Copiar arquivos Docker e Deploy (Usando SSH com rsync)
+          
+      - name: BE - Copiar arquivo do Docker
         uses: easingthemes/ssh-deploy@main
         with:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: /home/${{ secrets.REMOTE_USER }}/backend/docker
-          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          SOURCE: "./backend/docker/Dockerfile"           
+          TARGET: /home/${{ secrets.REMOTE_USER }}/backend/docker          
           ARGS: "-rltgoDzvO --delete" 
-          # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./target)
-          SOURCE: "./backend/docker/Dockerfile"                  
+             
 
       # 10. Fazendo o envio do jar da ec2 pública para a privada
       - name: BE - Executar Comando Shell na EC2
