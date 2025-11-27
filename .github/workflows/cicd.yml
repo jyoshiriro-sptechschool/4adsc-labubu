@@ -96,7 +96,7 @@ jobs:
         run: mvn package -DskipTests=true # -DskipTests=true pq os testes foram executados no passo anterior
         working-directory: ./backend
         
-	  # 9. Dando o mesmo nome sempre ao .jar
+      # 9. Dando o mesmo nome sempre ao .jar
       - name: BE - Renomear JAR para api.jar # ou o nome que preferir parta o jar
         run: |
           # Encontra o primeiro (e único) arquivo .jar gerado na pasta 'target'
