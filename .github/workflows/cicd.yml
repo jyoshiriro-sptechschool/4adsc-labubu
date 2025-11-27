@@ -38,11 +38,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/dist
-          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
-          ARGS: "-rltgoDzvO --delete" 
           # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./dist)
-          SOURCE: "./frontend/dist/" 
+          SOURCE: "./frontend/dist/"           
+          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          ARGS: "-rltgoDzvO --delete          
+          TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/dist" 
           
       - name: FE - Copiar arquivos do Docker
         uses: easingthemes/ssh-deploy@main
@@ -50,11 +50,10 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/docker
-          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          SOURCE: "../backend/docker/Dockerfile"           
           ARGS: "-rltgoDzvO --delete" 
-          # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./dist)
-          SOURCE: "./frontend/docker/"           
+          TARGET: /home/${{ secrets.REMOTE_USER }}/backend/docker
+          
 
       # 5. Atualiando o IP privado da API e reininciado o docker do Ngnix
       - name: FE - Executar Comando Shell na EC2
@@ -168,9 +167,9 @@ jobs:
 
             
             # enviando o arquivo Dockerfile via scp para o ec2 privado (essa instância precisa ter o diretório ~/backend/docker)
-            echo "Tentando enviar arquivo /home/${{ secrets.REMOTE_USER }}/backend/api.jar"
+            echo "Tentando enviar arquivo /home/${{ secrets.REMOTE_USER }}/backend/docker/Dockerfile"
             scp -o StrictHostKeyChecking=no -i $ARQUIVO_PEM /home/${{ secrets.REMOTE_USER }}/backend/docker/Dockerfile $USUARIO_IP:/home/${{ secrets.REMOTE_USER }}/backend/docker/
-            echo "Arquivo jar enviado ao ec2 privado"
+            echo "Arquivo Dockerfile enviado ao ec2 privado"
             
 
             # reininciando o servico 'backend' via docker 
