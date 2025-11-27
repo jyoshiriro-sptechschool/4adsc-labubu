@@ -107,7 +107,7 @@ jobs:
         working-directory: ./backend
 
       # 9. Deploy (Transferência de arquivos e execução de comandos remotos)
-      - name: BE - Copiar arquivos e Deploy (Usando SSH com rsync)
+      - name: BE - Copiar arquivo .jar (Usando SSH com rsync)
         uses: easingthemes/ssh-deploy@main
         with:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
@@ -118,6 +118,18 @@ jobs:
           ARGS: "-rltgoDzvO --delete" 
           # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./target)
           SOURCE: "./backend/target/*.jar"        
+
+      - name: BE - Copiar arquivos Docker e Deploy (Usando SSH com rsync)
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: /home/${{ secrets.REMOTE_USER }}/backend/docker
+          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          ARGS: "-rltgoDzvO --delete" 
+          # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./target)
+          SOURCE: "./backend/docker/*.*"                  
 
       # 10. Fazendo o envio do jar da ec2 pública para a privada
       - name: BE - Executar Comando Shell na EC2
@@ -154,15 +166,12 @@ jobs:
             scp -o StrictHostKeyChecking=no -i $ARQUIVO_PEM /home/${{ secrets.REMOTE_USER }}/backend/projeto14-0.0.1-SNAPSHOT.jar $USUARIO_IP:/home/${{ secrets.REMOTE_USER }}/backend
             echo "Arquivo jar enviado ao ec2 privado"
 
-            # reininciando o servico 'api' via docker 
-            ssh -i $ARQUIVO_PEM $USUARIO_IP 'sudo docker compose restart api'            
-            echo "servico reiniciado via docker compose"   
-
+            # reininciando o servico 'backend' via docker 
             ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker stop backend || true'
             ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker rm backend || true'
             echo "Container anterior parado e excluído"
 
-            ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker build -t api-sptech -f ./docker/Dockerfile .'
+            ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker build -t api-sptech -f /home/${{ secrets.REMOTE_USER }}/backend/docker/Dockerfile .'
             echo "Imagem docker recriada"
 
             ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker run -d --network host --name backend api-sptech'
