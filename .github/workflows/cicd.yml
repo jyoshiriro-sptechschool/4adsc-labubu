@@ -169,7 +169,7 @@ jobs:
             
             # enviando o arquivo Dockerfile via scp para o ec2 privado (essa instância precisa ter o diretório ~/backend/docker)
             echo "Tentando enviar arquivo /home/${{ secrets.REMOTE_USER }}/backend/api.jar"
-            scp -o StrictHostKeyChecking=no -i $ARQUIVO_PEM /home/${{ secrets.REMOTE_USER }}/docker/Dockerfile $USUARIO_IP:/home/${{ secrets.REMOTE_USER }}/backend/docker/
+            scp -o StrictHostKeyChecking=no -i $ARQUIVO_PEM /home/${{ secrets.REMOTE_USER }}/backend/docker/Dockerfile $USUARIO_IP:/home/${{ secrets.REMOTE_USER }}/backend/docker/
             echo "Arquivo jar enviado ao ec2 privado"
             
 
