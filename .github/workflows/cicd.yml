@@ -38,11 +38,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/dist" 
+		  # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          ARGS: "-rltgoDzvO --delete                    
           # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./dist)
           SOURCE: "./frontend/dist/"           
-          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
-          TARGET: /home/${{ secrets.REMOTE_USER }}/frontend/dist" 
-          ARGS: "-rltgoDzvO --delete                    
          
           
 
@@ -115,9 +115,9 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          SOURCE: "./backend/docker/Dockerfile"           
           TARGET: /home/${{ secrets.REMOTE_USER }}/backend/docker          
           ARGS: "-rltgoDzvO --delete" 
+          SOURCE: "./backend/docker/Dockerfile"                     
              
 
       # 10. Fazendo o envio do jar da ec2 pública para a privada
