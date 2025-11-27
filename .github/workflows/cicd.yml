@@ -129,7 +129,7 @@ jobs:
           # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
           ARGS: "-rltgoDzvO --delete" 
           # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./target)
-          SOURCE: "./backend/docker/*.*"                  
+          SOURCE: "./backend/docker/Dockerfile"                  
 
       # 10. Fazendo o envio do jar da ec2 pública para a privada
       - name: BE - Executar Comando Shell na EC2
