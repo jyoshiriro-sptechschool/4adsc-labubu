@@ -1,0 +1,638 @@
+[
+{
+"codigo": "SIAMES",
+"nome": "Siamês"
+},
+{
+  "codigo": "VIRA_LATA",
+  "nome": "Vira Lata"
+},
+{
+"codigo": "LABRADOR_RETRIEVER",
+"nome": "Labrador Retriever"
+},
+{
+"codigo": "PASTOR_ALEMAO",
+"nome": "Pastor Alemão"
+},
+{
+"codigo": "GOLDEN_RETRIEVER",
+"nome": "Golden Retriever"
+},
+{
+"codigo": "FRENCH_BULLDOG",
+"nome": "Bulldog Francês"
+},
+{
+"codigo": "BULLDOG",
+"nome": "Bulldogue"
+},
+{
+"codigo": "POODLE",
+"nome": "Poodle"
+},
+{
+"codigo": "BEAGLE",
+"nome": "Beagle"
+},
+{
+"codigo": "ROTTWEILER",
+"nome": "Rottweiler"
+},
+{
+"codigo": "POINTER",
+"nome": "Pointer"
+},
+{
+"codigo": "YORKSHIRE_TERRIER",
+"nome": "Yorkshire Terrier"
+},
+{
+"codigo": "BOXER",
+"nome": "Boxer"
+},
+{
+"codigo": "DACHSHUND",
+"nome": "Dachshund"
+},
+{
+"codigo": "SIBERIAN_HUSKY",
+"nome": "Husky Siberiano"
+},
+{
+"codigo": "GREAT_DANE",
+"nome": "Dogue Alemão"
+},
+{
+"codigo": "DOBERMANN",
+"nome": "Dobermann"
+},
+{
+"codigo": "SHIH_TZU",
+"nome": "Shih Tzu"
+},
+{
+"codigo": "AUSTRALIAN_SHEPHERD",
+"nome": "Australian Shepherd"
+},
+{
+"codigo": "POMERANIAN",
+"nome": "Pomerânia"
+},
+{
+"codigo": "BULL_TERRIER",
+"nome": "Bull Terrier"
+},
+{
+"codigo": "CHIHUAHUA",
+"nome": "Chihuahua"
+},
+{
+"codigo": "MALTESE",
+"nome": "Maltês"
+},
+{
+"codigo": "BASSET_HOUND",
+"nome": "Basset Hound"
+},
+{
+"codigo": "CAO_DE_AGUA_PORTUGUES",
+"nome": "Cão de Água Português"
+},
+{
+"codigo": "SAMOYED",
+"nome": "Samoieda"
+},
+{
+"codigo": "BICHON_FRISE",
+"nome": "Bichon Frisé"
+},
+{
+"codigo": "NEWFOUNDLAND",
+"nome": "Terra Nova"
+},
+{
+"codigo": "PAPILLON",
+"nome": "Papillon"
+},
+{
+"codigo": "STAFFORDSHIRE_BULL_TERRIER",
+"nome": "Staffordshire Bull Terrier"
+},
+{
+"codigo": "AKITA",
+"nome": "Akita"
+},
+{
+"codigo": "DALMATIAN",
+"nome": "Dálmata"
+},
+{
+"codigo": "WHIPPET",
+"nome": "Whippet"
+},
+{
+"codigo": "IRISH_SETTER",
+"nome": "Irish Setter"
+},
+{
+"codigo": "COCKER_SPANIEL",
+"nome": "Cocker Spaniel"
+},
+{
+"codigo": "ENGLISH_SPRINGER_SPANIEL",
+"nome": "Springer Spaniel Inglês"
+},
+{
+"codigo": "TIBETAN_MASTIFF",
+"nome": "Mastim Tibetano"
+},
+{
+"codigo": "SHAR_PEI",
+"nome": "Shar Pei"
+},
+{
+"codigo": "BULLMASTIFF",
+"nome": "Bullmastiff"
+},
+{
+"codigo": "BERNESE_MOUNTAIN_DOG",
+"nome": "Boiadeiro Bernês"
+},
+{
+"codigo": "CHOW_CHOW",
+"nome": "Chow Chow"
+},
+{
+"codigo": "KELPIE_AUSTRALIANO",
+"nome": "Kelpie Australiano"
+},
+{
+"codigo": "BRAZILIAN_FILA",
+"nome": "Fila Brasileiro"
+},
+{
+"codigo": "OTTERHOUND",
+"nome": "Otterhound"
+},
+{
+"codigo": "SALUKI",
+"nome": "Saluki"
+},
+{
+"codigo": "BORZOI",
+"nome": "Barzoi"
+},
+{
+"codigo": "PEKINGESE",
+"nome": "Pequinês"
+},
+{
+"codigo": "GREAT_PYRENEES",
+"nome": "Grande Pirineus"
+},
+{
+"codigo": "ANATOLIAN_SHEPHERD",
+"nome": "Pastor Anatólio"
+},
+{
+"codigo": "IRISH_WOLFHOUND",
+"nome": "Wolfhound Irlandês"
+},
+{
+"codigo": "TIBETAN_TERRIER",
+"nome": "Terrier Tibetano"
+},
+{
+"codigo": "PERSA",
+"nome": "Persa"
+},
+{
+"codigo": "SIAMESE",
+"nome": "Siamês"
+},
+{
+"codigo": "MAINE_COON",
+"nome": "Maine Coon"
+},
+{
+"codigo": "RAGDOLL",
+"nome": "Ragdoll"
+},
+{
+"codigo": "SPHYNX",
+"nome": "Sphynx"
+},
+{
+"codigo": "BENGAL",
+"nome": "Bengal"
+},
+{
+"codigo": "ABYSSINIAN",
+"nome": "Abissínio"
+},
+{
+"codigo": "ORIENTAL_SHORTHAIR",
+"nome": "Oriental"
+},
+{
+"codigo": "RUSSIAN_BLUE",
+"nome": "Azul Russo"
+},
+{
+"codigo": "SCOTTISH_FOLD",
+"nome": "Scottish Fold"
+},
+{
+"codigo": "BRITISH_SHORTHAIR",
+"nome": "British Shorthair"
+},
+{
+"codigo": "AMERICAN_SHORTHAIR",
+"nome": "American Shorthair"
+},
+{
+"codigo": "EXOTIC_SHORTHAIR",
+"nome": "Exotic Shorthair"
+},
+{
+"codigo": "TURKISH_ANGORA",
+"nome": "Angorá Turco"
+},
+{
+"codigo": "TURKISH_VAN",
+"nome": "Van Turco"
+},
+{
+"codigo": "NORWEGIAN_FOREST",
+"nome": "Floresta da Noruega"
+},
+{
+"codigo": "SINGAPURA",
+"nome": "Singapura"
+},
+{
+"codigo": "CORNISH_REX",
+"nome": "Cornish Rex"
+},
+{
+"codigo": "DEVON_REX",
+"nome": "Devon Rex"
+},
+{
+"codigo": "BURMESE",
+"nome": "Burmese"
+},
+{
+"codigo": "TONKINESE",
+"nome": "Tonkinese"
+},
+{
+"codigo": "JAPANESE_BOBTAIL",
+"nome": "Japanese Bobtail"
+},
+{
+"codigo": "BALINESE",
+"nome": "Balinês"
+},
+{
+"codigo": "HAVANA_BROWN",
+"nome": "Havana Brown"
+},
+{
+"codigo": "KHAO_MANEE",
+"nome": "Khao Manee"
+},
+{
+"codigo": "SELKIRK_REX",
+"nome": "Selkirk Rex"
+},
+{
+"codigo": "NEBELUNG",
+"nome": "Nebelung"
+},
+{
+"codigo": "SOMALI",
+"nome": "Somali"
+},
+{
+"codigo": "PIXIEBOB",
+"nome": "Pixie-bob"
+},
+{
+"codigo": "OCICAT",
+"nome": "Ocicat"
+},
+{
+"codigo": "CHARTREUX",
+"nome": "Chartreux"
+},
+{
+"codigo": "LAPERM",
+"nome": "LaPerm"
+},
+{
+"codigo": "EGYPTIAN_MAU",
+"nome": "Egyptian Mau"
+},
+{
+"codigo": "RAGAMUFFIN",
+"nome": "Ragamuffin"
+},
+{
+"codigo": "MANX",
+"nome": "Manx"
+},
+{
+"codigo": "TOYGER",
+"nome": "Toyger"
+},
+{
+"codigo": "EUROPEAN_SHORTHAIR",
+"nome": "European Shorthair"
+},
+{
+"codigo": "AUSTRALIAN_MIST",
+"nome": "Australian Mist"
+},
+{
+"codigo": "BURMILLA",
+"nome": "Burmilla"
+},
+{
+"codigo": "BRITISH_LONGHAIR",
+"nome": "British Longhair"
+},
+{
+"codigo": "AMERICAN_BOBTAIL",
+"nome": "American Bobtail"
+},
+{
+"codigo": "KORAT",
+"nome": "Korat"
+},
+{
+"codigo": "PETERBALD",
+"nome": "Peterbald"
+},
+{
+"codigo": "SNOWSHOE",
+"nome": "Snowshoe"
+},
+{
+"codigo": "CALIFORNIA_SPANGLED",
+"nome": "California Spangled"
+},
+{
+"codigo": "SERENGETI",
+"nome": "Serengeti"
+},
+{
+"codigo": "CHAUSIE",
+"nome": "Chausie"
+},
+{
+"codigo": "BOMBAY",
+"nome": "Bombay"
+},
+{
+"codigo": "HIMALAYAN",
+"nome": "Himalayan"
+},
+{
+"codigo": "THAI",
+"nome": "Thai"
+},
+{
+"codigo": "DUTCH_RABBIT",
+"nome": "Dutch"
+},
+{
+"codigo": "HOLLAND_LOP",
+"nome": "Holland Lop"
+},
+{
+"codigo": "NETHERLAND_DWARF",
+"nome": "Netherland Dwarf"
+},
+{
+"codigo": "FLEMISH_GIANT",
+"nome": "Flemish Giant"
+},
+{
+"codigo": "LIONHEAD",
+"nome": "Lionhead"
+},
+{
+"codigo": "MINI_REX",
+"nome": "Mini Rex"
+},
+{
+"codigo": "REX_RABBIT",
+"nome": "Rex"
+},
+{
+"codigo": "ENGLISH_ANGORA",
+"nome": "English Angora"
+},
+{
+"codigo": "FRENCH_LOP",
+"nome": "French Lop"
+},
+{
+"codigo": "AMERICAN_SABLE",
+"nome": "American Sable"
+},
+{
+"codigo": "CANARY",
+"nome": "Canário"
+},
+{
+"codigo": "BUDGERIGAR",
+"nome": "Periquito"
+},
+{
+"codigo": "COCKATIEL",
+"nome": "Calopsita"
+},
+{
+"codigo": "BLUE_MACAW",
+"nome": "Arara Azul"
+},
+{
+"codigo": "CANINDE_MACAW",
+"nome": "Arara Canindé"
+},
+{
+"codigo": "COCKATOO",
+"nome": "Cacatua"
+},
+{
+"codigo": "LOVEBIRD",
+"nome": "Agapornis"
+},
+{
+"codigo": "CONURE",
+"nome": "Conure"
+},
+{
+"codigo": "AMAZON_PARROT",
+"nome": "Papagaio Amazônico"
+},
+{
+"codigo": "AFRICAN_GREY",
+"nome": "Papagaio do Congo (African Grey)"
+},
+{
+"codigo": "PARRAKEET",
+"nome": "Periquito (Parrakeet)"
+},
+{
+"codigo": "TUCAN",
+"nome": "Tucano"
+},
+{
+"codigo": "DOVE",
+"nome": "Pomba"
+},
+{
+"codigo": "SILVER_CHEEKED_TUCAN",
+"nome": "Tucano Prateado"
+},
+{
+"codigo": "FINCH",
+"nome": "Pintassilgo"
+},
+{
+"codigo": "GOLDFINCH",
+"nome": "Cardeal"
+},
+{
+"codigo": "MYNA",
+"nome": "Myna"
+},
+{
+"codigo": "RINGNECK_PARROT",
+"nome": "Papagaio de Colar"
+},
+{
+"codigo": "LORY",
+"nome": "Lóris"
+},
+{
+"codigo": "LOVEBIRD_ROSEICOLLIS",
+"nome": "Agapornis Roseicollis"
+},
+{
+"codigo": "QUAKER_PARROT",
+"nome": "Quaker"
+},
+{
+"codigo": "MACAW_GREENWING",
+"nome": "Arara de Asa Verde"
+},
+{
+"codigo": "MACAW_RED_AND_GREEN",
+"nome": "Arara Vermelha e Verde"
+},
+{
+"codigo": "HYACINTH_MACAW",
+"nome": "Arara Hyacinth"
+},
+{
+"codigo": "LOUISE_TIT",
+"nome": "Siskin"
+},
+{
+"codigo": "SILVER_PHEASANT",
+"nome": "Faisão Prateado"
+},
+{
+"codigo": "PARROTLET",
+"nome": "Parrotlet"
+},
+{
+"codigo": "BUDGERIGAR_FANCY",
+"nome": "Periquito Fancy"
+},
+{
+"codigo": "CANARY_SINGER",
+"nome": "Canário Cantor"
+},
+{
+"codigo": "PARADISE_LOREK",
+"nome": "Lóris do Paraíso"
+},
+{
+"codigo": "PELICAN",
+"nome": "Pelicano"
+},
+{
+"codigo": "KINGFISHER",
+"nome": "Martim-pescador"
+},
+{
+"codigo": "BLACKBIRD",
+"nome": "Melro"
+},
+{
+"codigo": "STARLING",
+"nome": "Estorninho"
+},
+{
+"codigo": "GROSBEAK",
+"nome": "Cardealito"
+},
+{
+"codigo": "HORNBILL",
+"nome": "Calaú"
+},
+{
+"codigo": "RAPTOR_SMALL",
+"nome": "Falcão Pequeno"
+},
+{
+"codigo": "DANISH_SONGTHRUSH",
+"nome": "Sabiá Dinamarquês"
+},
+{
+"codigo": "VULTURE_SMALL",
+"nome": "Urubu Pequeno"
+},
+{
+"codigo": "HOOPOE",
+"nome": "Upupa"
+},
+{
+"codigo": "KAKAPO",
+"nome": "Kakapo"
+},
+{
+"codigo": "KEA",
+"nome": "Kea"
+},
+{
+"codigo": "LOON",
+"nome": "Mergulhão"
+},
+{
+"codigo": "WREN",
+"nome": "Carrinho"
+},
+{
+"codigo": "NIGHTINGALE",
+"nome": "Rouxinol"
+},
+{
+"codigo": "WOODPECKER",
+"nome": "Pica-pau"
+},
+{
+"codigo": "SILVERPARROT",
+"nome": "Papagaio Prateado"
+},
+{
+"codigo": "TIT",
+"nome": "Chapim"
+}
+]
