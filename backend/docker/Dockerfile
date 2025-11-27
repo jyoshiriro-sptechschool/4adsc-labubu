@@ -16,7 +16,7 @@ EXPOSE 8080
 
 # Copia o arquivo JAR da sua máquina para o diretório de trabalho (/app) dentro do container
 # Assuma que 'target/app.jar' é o caminho para seu arquivo JAR local.
-COPY target/projeto14-0.0.1-SNAPSHOT.jar api.jar
+COPY backend/api.jar api.jar
 
 # Ponto de entrada (Entrypoint) e Comando de Execução (CMD)
 # Executa o JAR. Usar -Djava.security.egd=file:/dev/urandom pode melhorar a inicialização em ambientes Linux.
