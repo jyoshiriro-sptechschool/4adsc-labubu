@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the workflow will runname: CI/CD para EC2 pública (FE) e privada (BE)
@@ -89,3 +87,83 @@ jobs:
             docker run -d --network host --name frontend nginx-sptech
             echo "Container docker iniciado"
             
+      # 6. Configuração do ambiente Java/Maven
+      - name: BE - Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # ou a distribuição que preferir
+          java-version: '21'
+          cache: 'maven' # Configura cache do Maven para acelerar builds futuros
+
+      # 7. Execução dos testes automatizados do projeto
+      - name: BE - Executar Testes automatizados
+        run: mvn clean test # comentei os tests por enquanto     
+        working-directory: ./backend
+
+
+      # 8. Geração do .jar
+      - name: BE - Gerar Artefato .JAR
+        run: mvn package -DskipTests=true # -DskipTests=true pq os testes foram executados no passo anterior
+        working-directory: ./backend
+
+      # 9. Deploy (Transferência de arquivos e execução de comandos remotos)
+      - name: BE - Copiar arquivos e Deploy (Usando SSH com rsync)
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: /home/${{ secrets.REMOTE_USER }}/backend/
+          # ARGS para rsync: -rltgoDzvO para cópia recursiva, compressão e outros
+          ARGS: "-rltgoDzvO --delete" 
+          # SOURCE: O que será copiado. Pode ser o diretório de build (ex: ./target)
+          SOURCE: "./backend/target/*.jar"        
+
+      # 10. Fazendo o envio do jar da ec2 pública para a privada
+      - name: BE - Executar Comando Shell na EC2
+        uses: appleboy/ssh-action@v1.0.3 # Action popular para SSH
+        with:
+          host: ${{ secrets.REMOTE_HOST }} 
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}  
+
+          # O Comando ou Script a ser Executado no EC2
+          # Use o pipe '|' para comandos de múltiplas linhas
+          script: |
+            set -e
+            # criando um .pem temporário, baseado no secret do github
+            ARQUIVO_PEM="/home/${{ secrets.REMOTE_USER }}/chavetmp.pem"
+            echo "Arquivo pem que sera criado: $ARQUIVO_PEM"
+
+            # excluindo o arquivo .pem, caso exista
+            rm $ARQUIVO_PEM -f
+            echo "Arquivo .pem excluído"
+            
+            echo "${{ secrets.EC2_SSH_KEY }}" > $ARQUIVO_PEM || true
+            echo "Arquivo pem criado"
+            chmod 400 $ARQUIVO_PEM || true
+            echo "Permissões ao pem concedidas"
+
+            # usuario e ip de destino:
+            USUARIO_IP=${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST_PRIVADO }}
+            echo "usuario@ip configurado: $USUARIO_IP"
+
+                  
+            # enviando o arquivo .jar via scp para o ec2 privado (essa instância precisa ter o diretório /usr/share/api/)
+            echo "Tentando enviar arquivo /home/${{ secrets.REMOTE_USER }}/backend/api.jar"
+            scp -o StrictHostKeyChecking=no -i $ARQUIVO_PEM /home/${{ secrets.REMOTE_USER }}/backend/projeto14-0.0.1-SNAPSHOT.jar $USUARIO_IP:/usr/share/api/projeto14-0.0.1-SNAPSHOT.jar
+            echo "Arquivo jar enviado ao ec2 privado"
+
+            # reininciando o servico 'api' via docker 
+            ssh -i $ARQUIVO_PEM $USUARIO_IP 'sudo docker compose restart api'            
+            echo "servico reiniciado via docker compose"   
+
+            ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker stop backend || true'
+            ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker rm backend || true'
+            echo "Container anterior parado e excluído"
+
+            ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker build -t api-sptech -f ./docker/Dockerfile .'
+            echo "Imagem docker recriada"
+
+            ssh -i $ARQUIVO_PEM $USUARIO_IP 'docker run -d --network host --name backend api-sptech'
+            echo "Container docker iniciado"
