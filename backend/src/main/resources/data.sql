@@ -181,4 +181,25 @@ INSERT INTO pet (nome_pet, nome_dono, especie_codigo, raca_codigo, email_dono, p
 ('Fido', 'João Silva', 'CAO', 'VIRA_LATA', 'joao.silva@example.com', 15.5, 0.5, '2020-01-15', '2030-01-15', '12345678901', '(11) 98765-4321', true),
 ('Miau', 'Maria Souza', 'GATO', 'SIAMES', 'maria.souza@example.com', 4.2, 0.25, '2021-05-20', '2031-05-20', '10987654321', '(21) 91234-5678', true),
 ('Piu', 'Carlos Pereira', 'PASSARO', 'PERSA', 'carlos.pereira@example.com', 0.1, 0.1, '2022-02-10', '2032-02-10', '56789012345', '(31) 99999-8888', false),
-('Rex', 'Ana Costa', 'CAO', 'PASTOR_ALEMAO', 'ana.costa@example.com', 30.0, 0.7, '2019-11-30', '2029-11-30', '98765432109', '(41) 98888-7777', true);
+('Rex', 'Ana Costa', 'CAO', 'PASTOR_ALEMAO', 'ana.costa@example.com', 30.0, 0.7, '2019-11-30', '2029-11-30', '98765432109', '(41) 98888-7777', true)
+,('Bella', 'Lucas Souza', 'CAO', 'LABRADOR_RETRIEVER', 'lucas.souza@example.com', 25.0, 0.6, '2018-06-10', '2028-06-10', '11122233344', '(11) 91234-0001', true)
+,('Fifi', 'Mariana Silva', 'GATO', 'MAINE_COON', 'mariana.silva@example.com', 4.5, 0.3, '2020-09-05', '2030-09-05', '22233344455', '(21) 92345-0002', true)
+,('Tico', 'Roberto Almeida', 'PASSARO', 'TUCAN', 'roberto.almeida@example.com', 0.2, 0.2, '2021-03-12', '2031-03-12', '33344455566', '(31) 93456-0003', false)
+,('Luna', 'Carla Souza', 'GATO', 'RAGDOLL', 'carla.souza@example.com', 3.8, 0.25, '2019-12-01', '2029-12-01', '44455566677', '(41) 94567-0004', true)
+,('Bolt', 'Paulo Silva', 'CAO', 'POODLE', 'paulo.silva@example.com', 8.3, 0.45, '2022-07-20', '2032-07-20', '55566677788', '(51) 95678-0005', true)
+,('Miau', 'Ana Costa', 'GATO', 'SIAMESE', 'ana.costa@example.com', 4.0, 0.24, '2021-05-20', '2031-05-20', '66677788899', '(11) 96789-0006', true)
+,('Fido', 'João Silva', 'CAO', 'VIRA_LATA', 'joao.silva@example.com', 16.0, 0.52, '2020-01-15', '2030-01-15', '77788899900', '(21) 97890-0007', true)
+,('Nina', 'Sofia Pereira', 'GATO', 'BENGAL', 'sofia.pereira@example.com', 5.1, 0.28, '2022-11-11', '2032-11-11', '88899900011', '(31) 98901-0008', false)
+,('Rex', 'Ana Costa', 'CAO', 'BOXER', 'ana.costa@example.com', 28.0, 0.68, '2019-11-30', '2029-11-30', '98765432109', '(41) 98888-7777', true)
+,('Pipoca', 'Bruno Lima', 'ROEDOR', 'MINI_REX', 'bruno.lima@example.com', 1.2, 0.30, '2023-04-01', '2033-04-01', '99900011122', '(51) 99012-0009', true)
+,('Kiki', 'Fernanda Souza', 'PASSARO', 'CANARY', 'fernanda.souza@example.com', 0.05, 0.08, '2021-08-08', '2031-08-08', '00011122233', '(11) 90123-0010', false)
+,('Zeus', 'Miguel Santos', 'CAO', 'DOBERMANN', 'miguel.santos@example.com', 35.0, 0.75, '2017-02-02', '2027-02-02', '11133344455', '(21) 91200-0011', true)
+,('Milu', 'Patricia Gomes', 'GATO', 'PERSA', 'patricia.gomes@example.com', 3.2, 0.22, '2020-10-10', '2030-10-10', '22244455566', '(31) 92300-0012', true)
+,('Fifo', 'Carlos Souza', 'CAO', 'BULL_TERRIER', 'carlos.souza@example.com', 24.5, 0.55, '2018-01-01', '2028-01-01', '33355566677', '(41) 93400-0013', true)
+,('Miau', 'Luciana Rocha', 'GATO', 'SIAMESE', 'luciana.rocha@example.com', 4.6, 0.26, '2021-06-06', '2031-06-06', '44466677788', '(51) 94500-0014', true)
+,('Thor', 'Roberto Almeida', 'CAO', 'GREAT_DANE', 'roberto.almeida@example.com', 50.0, 0.85, '2016-05-05', '2026-05-05', '55577788899', '(11) 95600-0015', true)
+,('Piu', 'Carlos Pereira', 'PASSARO', 'PARRAKEET', 'carlos.pereira@example.com', 0.12, 0.09, '2022-02-10', '2032-02-10', '56789012345', '(31) 99999-8888', false)
+,('Lulu', 'Marcos Silva', 'GATO', 'BRITISH_SHORTHAIR', 'marcos.silva@example.com', 5.0, 0.27, '2019-09-09', '2029-09-09', '66688899900', '(21) 96700-0016', true)
+,('Bella', 'Lucas Souza', 'CAO', 'GOLDEN_RETRIEVER', 'lucas.souza@example.com', 28.0, 0.62, '2018-06-10', '2028-06-10', '77799900011', '(11) 91234-0001', true)
+,('Coco', 'Rafael Silva', 'PASSARO', 'MACAW_RED_AND_GREEN', 'rafael.silva@example.com', 1.0, 0.33, '2020-03-03', '2030-03-03', '88800011122', '(31) 99800-0017', true);
+;
