@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sptech</groupId>
-	<artifactId>projeto14</artifactId>
+	<artifactId>projeto12</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>projeto14</name>
-	<description>Projeto 14</description>
+	<name>projeto12</name>
+	<description>Projeto 12</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -75,33 +75,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
-            <!-- Plugin JaCoCo -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.9</version>
-                <executions>
-
-                    <!-- Prepara o JaCoCo para capturar cobertura -->
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-
-                    <!-- Gera o relatório após os testes -->
-                    <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 		</plugins>
-
 	</build>
 
 </project>
